@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Jozi Nites Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
+        <h1>Jozi Nites Academy</h1>
+        <p class="tagline">Nurturing Relationships, Empowering Individuals 🍍</p>
+    </header>
 
+    <div class="form-container">
+        <h2>Join the Academy – Black Excellence in Intimate Education</h2>
+        <form id="registerForm">
+            <input type="text" id="fullName" placeholder="Full Name (e.g. Sipho Nkosi)" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Create Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+        <p><a href="index.html">← Back to Library</a></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
