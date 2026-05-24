@@ -9,8 +9,8 @@
     <title>Jozi Nites Academy – Nurturing Relationships, Empowering Individuals 🍍</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- AGE GATE SPLASH SCREEN -->
+<body> 
+<!-- AGE GATE SPLASH SCREEN WITH CONSENT CHECKBOX -->
 <div id="ageGate" class="age-gate">
     <div class="age-gate-content">
         <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy" class="logo" style="height: 110px;">
@@ -25,9 +25,17 @@
             This platform contains explicit adult content and consensual kink education.<br>
             You must be <strong>18 years or older</strong> to enter.
         </p>
+
+        <!-- Consent Checkbox -->
+        <div class="consent-box">
+            <input type="checkbox" id="consentCheck">
+            <label for="consentCheck">
+                I confirm I am 18+ and agree to engage with this content <strong>consensually and responsibly</strong>.
+            </label>
+        </div>
         
         <div class="age-buttons">
-            <button onclick="enterSite()" class="btn yes-btn">YES, I AM 18+</button>
+            <button onclick="enterSite()" id="enterBtn" class="btn yes-btn" disabled>YES, I AM 18+ AND CONSENT</button>
             <button onclick="leaveSite()" class="btn no-btn">NO, EXIT</button>
         </div>
         
@@ -36,6 +44,7 @@
         </small>
     </div>
 </div>
+        
     <header>
         <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
         <h1>Jozi Nites Academy</h1>
