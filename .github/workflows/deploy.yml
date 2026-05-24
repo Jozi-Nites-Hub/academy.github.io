@@ -1,0 +1,31 @@
+name: Deploy Jozi Nites Academy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allows you to run it manually
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (Optional - for future enhancements)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Optimize Images (Optional but recommended)
+        uses: calvellido/image-optim-action@v1
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          path: .
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages          # Target branch for live site
+          folder: .                 # Deploy everything in root
