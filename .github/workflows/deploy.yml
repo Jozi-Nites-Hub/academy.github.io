@@ -3,22 +3,17 @@ name: Deploy Jozi Nites Academy
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Allows you to run it manually
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (Optional - for future enhancements)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Optimize Images (Optional but recommended)
+      - name: Optimize Images
         uses: calvellido/image-optim-action@v1
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -27,15 +22,19 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages          # Target branch for live site
-          folder: .                 # Deploy everything in root
-                - name: Generate SEO Meta Tags & Sitemap
-        run: |
-          echo '<!DOCTYPE html><html><head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta name="description" content="Jozi Nites Academy - Consensual kink education, BDSM workshops, and intimate empowerment for the Black community in Johannesburg.">
-          <meta name="keywords" content="BDSM, Jozi, Johannesburg, kink education, consent, non-monogamy, Black community, workshops">
-          <title>Jozi Nites Academy – Nurturing Relationships, Empowering Individuals</title>
-          </head></html>' > index.html.seo
-          # This is a simple placeholder - you can expand later
+          branch: gh-pages
+          folder: .
+          clean: true
+
+      - name: Send Success Notification
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: ✅ Jozi Nites Academy - Site Updated Successfully!
+          to: academy@jozinites.co.za
+          from: Jozi Nites Academy Bot <no-reply@jozinites.co.za>
+          body: Great news Johnny Boy! 🍍 Your website has been successfully updated and is now live.
