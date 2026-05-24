@@ -1,0 +1,31 @@
+name: Auto-Update Academy Brochure
+
+on:
+  push:
+    paths:
+      - 'brochure-content/**'
+  workflow_dispatch:
+
+jobs:
+  update-brochure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Brochure from Folder
+        run: |
+          echo '<!DOCTYPE html><html><head><title>Jozi Nites Academy Brochure</title><style>body{font-family:Arial;background:white;color:#111;padding:20px;}</style></head><body>' > Jozi-Nites-Academy-Brochure.html
+          
+          for file in brochure-content/*; do
+            if [[ $file == *.jpg || $file == *.png || $file == *.jpeg ]]; then
+              echo "<img src='../$file' class='flyer' style='max-width:100%;margin:15px 0;border:3px solid gold;'><br>" >> Jozi-Nites-Academy-Brochure.html
+            fi
+          done
+          
+          echo '<h1>Jozi Nites Academy 2026</h1><p>Nurturing Relationships, Empowering Individuals 🍍</p></body></html>' >> Jozi-Nites-Academy-Brochure.html
+
+      - name: Deploy Updated Brochure
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: .
