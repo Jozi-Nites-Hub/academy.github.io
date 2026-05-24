@@ -40,3 +40,12 @@ header {
     display: inline-block;
     margin: 1rem;
 }
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+.whatsapp-btn:hover {
+    background: #20ba5a;
+}
