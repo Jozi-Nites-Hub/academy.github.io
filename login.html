@@ -7,38 +7,88 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hamburger Nav -->
-    <nav class="navbar"> 
-        <!-- Paste your existing navbar here if needed -->
-    </nav>
-
     <div class="login-container">
         <div class="login-box">
-            <img src="Jozi Nites Academy Logo.png" alt="Logo" class="logo">
+            <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy" class="logo">
             <h1>Learners Portal</h1>
-            <p>Welcome Back to Jozi Nites Academy</p>
+            <p>Welcome Back, Family</p>
 
             <form id="loginForm">
                 <input type="email" id="email" placeholder="Email Address" required>
                 <input type="password" id="password" placeholder="Password" required>
-                
                 <button type="submit" class="btn login-btn">LOGIN</button>
             </form>
 
             <div class="login-links">
+                <p><a href="#" onclick="showResetPassword()">Forgot Password?</a></p>
                 <p>Don't have an account? <a href="register.html">Register Here</a></p>
-                <p><a href="#">Forgot Password?</a></p>
             </div>
 
             <div id="loginMessage" class="message"></div>
+
+            <!-- Password Reset Form -->
+            <div id="resetForm" style="display:none;">
+                <h3>Reset Password</h3>
+                <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                <button onclick="sendPasswordReset()" class="btn">Send Reset Link</button>
+                <button onclick="hideResetPassword()" class="btn">Back to Login</button>
+            </div>
 
             <p class="back-link"><a href="index.html">← Back to Homepage</a></p>
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="auth.js"></script>
+    <script>
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('loginMessage');
+            
+            message.textContent = "Logging in...";
+            message.style.color = "#FFD700";
+
+            // Simulate login (replace with Firebase later)
+            setTimeout(() => {
+                message.textContent = "✅ Login Successful! Redirecting...";
+                message.style.color = "#00C853";
+                
+                setTimeout(() => {
+                    window.location.href = "portal.html";
+                }, 1500);
+            }, 1200);
+        });
+
+        // Password Reset
+        function showResetPassword() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('resetForm').style.display = 'block';
+        }
+
+        function hideResetPassword() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('resetForm').style.display = 'none';
+        }
+
+        function sendPasswordReset() {
+            const email = document.getElementById('resetEmail').value;
+            const message = document.getElementById('loginMessage');
+            
+            if (!email) {
+                message.textContent = "Please enter your email address.";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent = "Sending reset link...";
+            message.style.color = "#FFD700";
+
+            // Simulate reset
+            setTimeout(() => {
+                message.textContent = `✅ Password reset link sent to ${email}`;
+                message.style.color = "#00C853";
+                hideResetPassword();
+            }, 1500);
+        }
+    </script>
 </body>
 </html>
