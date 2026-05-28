@@ -3,39 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learners Portal - Jozi Nites Academy</title>
+    <title>My Dashboard - Jozi Nites Academy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
-        <h1>Welcome to Your Private Portal, Brother/Sister</h1>
+        <img src="Jozi Nites Academy Logo.png" alt="Logo" class="logo">
+        <h1>Welcome Back, Johnny Boy</h1>
+        <p>Learners Portal • Jozi Nites Academy</p>
     </header>
 
-    <div class="portal-content">
-        <h2>Exclusive Workshop Materials</h2>
-        <p>Access your 2026 workshop recordings, workbooks, consent guides, and community resources.</p>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>Kinky Contracts & BDSM Agreements</h3>
-                <p>Full recording + downloadable templates (Presented by Sis Nomsa & Bro Lerato)</p>
-                <a href="#" class="btn">Watch Replay</a>
+    <div class="dashboard-container">
+        <!-- Progress Overview -->
+        <section class="progress-overview">
+            <h2>Your Semester Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress" style="width: 65%;">65% Complete</div>
             </div>
-            <!-- Add more exclusive content cards here -->
-        </div>
+        </section>
 
-        <button onclick="logout()">Logout</button>
+        <!-- Current Courses -->
+        <section class="courses-dashboard">
+            <h2>My Enrolled Courses</h2>
+            <div class="grid" id="coursesGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Assignments -->
+        <section class="assignments">
+            <h2>Upcoming Assignments</h2>
+            <div id="assignmentsList"></div>
+        </section>
+
+        <!-- Certificates -->
+        <section class="certificates">
+            <h2>Certificates Earned</h2>
+            <div class="grid" id="certificatesGrid"></div>
+        </section>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="auth.js"></script>
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close-btn">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <footer>
-    <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">📲 WhatsApp Community</a> |
-    <a href="login.html">Sign In</a> |
-    <a href="terms.html">Terms & Conditions</a>
+        <a href="index.html">← Back to Homepage</a>
     </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Sample Data
+        let courses = [
+            { id: 1, title: "Kinky Contracts & BDSM Agreements", facilitator: "Sis Nomsa & Bro Lerato", progress: 80, status: "In Progress" },
+            { id: 2, title: "The Art of Asking", facilitator: "Bro Thabo Nkosi", progress: 45, status: "In Progress" }
+        ];
+
+        let assignments = [
+            { title: "Draft Your Personal Kinky Contract", due: "15 June 2026", course: "Kinky Contracts" },
+            { title: "Communication Roleplay Exercise", due: "10 July 2026", course: "The Art of Asking" }
+        ];
+
+        let certificates = [
+            { title: "Consent Mastery", date: "May 2026" }
+        ];
+
+        // Render Functions
+        function renderCourses() {
+            const container = document.getElementById('coursesGrid');
+            container.innerHTML = '';
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                card.innerHTML = `
+                    <h3>${course.title}</h3>
+                    <p>${course.facilitator}</p>
+                    <div class="progress-small">Progress: ${course.progress}%</div>
+                    <button class="btn" onclick="openCourse(${course.id})">Continue Learning</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openCourse(id) {
+            const modal = document.getElementById('courseModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            const course = courses.find(c => c.id === id);
+            title.textContent = course.title;
+            
+            content.innerHTML = `
+                <p><strong>Facilitator:</strong> ${course.facilitator}</p>
+                <video width="100%" controls>
+                    <source src="https://www.youtube.com/embed/dQw4w9wgxcq" type="video/mp4">
+                </video>
+                <button onclick="markModuleComplete(${id})" class="btn">Mark Module Complete</button>
+            `;
+            modal.style.display = "block";
+        }
+
+        function markModuleComplete(id) {
+            const course = courses.find(c => c.id === id);
+            if (course) course.progress = Math.min(100, course.progress + 20);
+            alert("🎉 Progress updated! Great work, Johnny Boy.");
+            closeModal();
+            renderCourses();
+        }
+
+        function closeModal() {
+            document.getElementById('courseModal').style.display = "none";
+        }
+
+        // Initialize Dashboard
+        window.onload = function() {
+            renderCourses();
+            // Add more render functions for assignments and certificates as needed
+        };
+    </script>
 </body>
 </html>
