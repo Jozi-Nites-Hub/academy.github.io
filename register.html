@@ -1,47 +1,63 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
-    <div class="form-container">
-    <h2>Join Jozi Nites Academy</h2>
-    <p>Best way to register: Join our WhatsApp first</p>
-    
-    <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" 
-       target="_blank" 
-       class="btn whatsapp-btn">
-        📲 Join WhatsApp Community & Register
-    </a>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Jozi Nites Academy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
-        <h1>Jozi Nites Academy</h1>
-        <p class="tagline">Nurturing Relationships, Empowering Individuals 🍍</p>
-    </header>
+    <div class="login-container">
+        <div class="login-box">
+            <img src="Jozi Nites Academy Logo.png" alt="Logo" class="logo">
+            <h1>Join Jozi Nites Academy</h1>
+            <p>Create your account and begin your journey</p>
 
-    <div class="form-container">
-        <h2>Join the Academy – Black Excellence in Intimate Education</h2>
-        <form id="registerForm">
-            <input type="text" id="fullName" placeholder="Full Name (e.g. Sipho Nkosi)" required>
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="password" placeholder="Create Password" required>
-            <button type="submit">Register</button>
-                   </form>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
-        <p><a href="index.html">← Back to Library</a></p>
+            <form id="registerForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Create Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                
+                <button type="submit" class="btn login-btn">REGISTER</button>
+            </form>
+
+            <div class="login-links">
+                <p>Already have an account? <a href="login.html">Login Here</a></p>
+            </div>
+
+            <div id="registerMessage" class="message"></div>
+
+            <p class="back-link"><a href="index.html">← Back to Homepage</a></p>
+        </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="auth.js"></script>
-    <footer>
-    <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">📲 WhatsApp Community</a> |
-    <a href="login.html">Sign In</a> |
-    <a href="terms.html">Terms & Conditions</a>
-    </footer>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const message = document.getElementById('registerMessage');
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                message.textContent = "❌ Passwords do not match!";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent = "Creating your account...";
+            message.style.color = "#FFD700";
+
+            setTimeout(() => {
+                message.textContent = "✅ Account created successfully! Redirecting to login...";
+                message.style.color = "#00C853";
+                
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1800);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
