@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jozi Nites Academy - Consensual Kink & Intimate Education for Black Adults in Johannesburg">
+    <meta name="description" content="Jozi Nites Academy - Consensual Kink & Intimate Education for the Black Community in Johannesburg">
     <title>Jozi Nites Academy – Nurturing Relationships, Empowering Individuals 🍍</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- HAMBURGER NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy" class="nav-logo">
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">🏠 Home</a>
+            <a href="Jozi-Nites-Academy-Brochure.html">📖 Brochure</a>
+            <a href="portal.html">📊 My Dashboard</a>
+            <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">💬 WhatsApp Community</a>
+            <a href="privacy-policy.html">🔒 Privacy Policy</a>
+            <a href="terms.html">📜 Terms & Conditions</a>
+            <a href="login.html" class="login-btn">🔑 Login / Register</a>
+        </div>
+    </nav>
+
     <!-- AGE GATE -->
     <div id="ageGate" class="age-gate">
         <div class="age-gate-content">
@@ -48,11 +70,11 @@
 
     <!-- HERO -->
     <section class="hero">
-        <h2>Welcome to Johannesburg’s Premier Academy for Consensual Intimate Education</h2>
-        <p>Practical, academic-level workshops designed by and for the Black community.</p>
+        <h2>Johannesburg’s Premier Academy for Consensual Intimate Education</h2>
+        <p>Practical workshops • Academic standards • Black excellence in pleasure & relationships</p>
     </section>
 
-    <!-- ACADEMIC CALENDAR WIDGET -->
+    <!-- ACADEMIC CALENDAR -->
     <section class="calendar-section">
         <h2>2026 Academic Calendar</h2>
         <div class="calendar-grid">
@@ -65,39 +87,17 @@
         </div>
     </section>
 
-    <!-- CURRENT SEMESTER COURSES -->
+    <!-- CURRENT COURSES -->
     <section class="courses-section">
         <h2>Current Semester Courses</h2>
         <div class="grid">
             <div class="card">
                 <h3>Kinky Contracts & BDSM Agreements</h3>
                 <p>Facilitated by <strong>Sis Nomsa & Bro Lerato</strong></p>
-                <p class="small">April 2026 • Limited to 10 participants</p>
             </div>
             <div class="card">
-                <h3>Swinging & Ethical Non-Monogamy</h3>
+                <h3>The Art of Asking</h3>
                 <p>Facilitated by <strong>Bro Thabo Nkosi</strong></p>
-                <p class="small">June 2026</p>
-            </div>
-            <div class="card">
-                <h3>Anal Mastery</h3>
-                <p>Facilitated by <strong>Sis Zinhle Mbatha</strong></p>
-                <p class="small">September 2026</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- STUDENT TESTIMONIALS -->
-    <section class="testimonials-section">
-        <h2>What Our Students Say</h2>
-        <div class="grid">
-            <div class="card">
-                <p>"This academy changed how I communicate in my relationship. Real knowledge, zero judgment."</p>
-                <strong>— Brother Sipho, Johannesburg</strong>
-            </div>
-            <div class="card">
-                <p>"The consent training and practical tools gave me so much confidence. Highly recommended."</p>
-                <strong>— Sister Lerato, Soweto</strong>
             </div>
         </div>
     </section>
@@ -106,24 +106,21 @@
     <section class="quick-links">
         <h2>Student Hub</h2>
         <div class="quick-grid">
-            <a href="Jozi-Nites-Academy-Brochure.html" class="quick-card">📚 Library & Resources</a>
-            <a href="#" class="quick-card">📝 Assignments & Homework</a>
+            <a href="portal.html" class="quick-card">📊 My Dashboard</a>
+            <a href="Jozi-Nites-Academy-Brochure.html" class="quick-card">📚 Library</a>
             <a href="#" class="quick-card">🏅 Certificates</a>
-            <a href="#" class="quick-card">🎙️ Academy Podcast</a>
-            <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" class="quick-card">💬 Community</a>
+            <a href="#" class="quick-card">📝 Assignments</a>
         </div>
     </section>
 
     <!-- Floating Chatbot -->
     <div class="chatbot">
-        <img src="Chat bot Icon (1).png" alt="Pine" onclick="toggleChat()" style="width:85px;">
+        <img src="Chat bot Icon (1).png" alt="Pine the Guide" onclick="toggleChat()" style="width:85px;">
         <div id="chatWindow" class="chat-window"></div>
     </div>
 
     <footer>
-        <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="login.html">Learners Portal</a>
+        <p>&copy; 2026 Jozi Nites Academy • All Rights Reserved</p>
     </footer>
 
     <script src="script.js"></script>
