@@ -3,25 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jozi Nites Academy - Consensual kink education, BDSM workshops & intimate empowerment for the Black community in Johannesburg.">
     <title>Jozi Nites Academy – Nurturing Relationships, Empowering Individuals 🍍</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- AGE GATE -->
+    <div id="ageGate" class="age-gate">
+        <div class="age-gate-content">
+            <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
+            <h1>Jozi Nites Academy</h1>
+            <p class="tagline">Nurturing Relationships, Empowering Individuals 🍍</p>
+            
+            <img src="No under 18 years allowed..png" alt="18+" style="height: 110px; margin: 15px 0;">
+            <img src="PARENTAL ADVISORY EXPLICIT CONTENT.png" alt="Explicit Content" style="height: 85px; margin: 10px 0;">
+            
+            <p style="margin: 25px 0; font-size: 1.1rem; color: #ffcccc;">
+                <strong>EXPLICIT ADULT EDUCATION CONTENT</strong><br>
+                This platform contains mature, consensual kink education material.
+            </p>
+
+            <div class="consent-box">
+                <input type="checkbox" id="ageCheck">
+                <label for="ageCheck">I am 18 years or older</label><br><br>
+                
+                <input type="checkbox" id="contentCheck">
+                <label for="contentCheck">I understand this is explicit adult education content and I agree to engage with it consensually and responsibly</label>
+            </div>
+            
+            <div class="age-buttons">
+                <button onclick="enterSite()" id="enterBtn" class="btn yes-btn" disabled>
+                    YES, ENTER JOZI NITES ACADEMY
+                </button>
+                <button onclick="leaveSite()" class="btn no-btn">NO, EXIT</button>
+            </div>
+            
+            <small>This site is for consenting Black adults in Johannesburg only.</small>
+        </div>
+    </div>
+
     <header>
         <img src="Jozi Nites Academy Logo.png" alt="Jozi Nites Academy Logo" class="logo">
         <h1>Jozi Nites Academy</h1>
         <p class="tagline">Nurturing Relationships, Empowering Individuals 🍍</p>
     </header>
 
-    <!-- Age Gate -->
-    <div id="ageGate" class="age-gate"> ... </div>
-
-    <h2>Johannesburg’s Premier Platform for Consensual Kink Education</h2>
-
-    <section>
-        <h3>2026 Workshops</h3>
-        <!-- Add your cards here -->
+    <section class="hero">
+        <h2>Johannesburg’s Premier Platform for Consensual Kink & Intimate Education</h2>
+        <p>Practical, judgment-free workshops designed by and for the Black community.</p>
     </section>
+
+    <!-- Tablet Brochure -->
+    <section class="brochure-section">
+        <h2>Explore Our 2026 Academy Brochure</h2>
+        <div class="tablet-mockup">
+            <div class="tablet-frame">
+                <iframe src="Jozi-Nites-Academy-Brochure.html" title="Academy Brochure"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp QR -->
+    <section class="qr-section">
+        <h2>Join Our WhatsApp Community</h2>
+        <img src="WhatsApp Image 2026-05-24 at 07.42.38.jpeg" alt="WhatsApp QR Code" class="qr-code">
+        <p>Scan to join instantly</p>
+        <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank" class="btn whatsapp-btn">📲 Join WhatsApp</a>
+    </section>
+
+    <!-- Wisdom Stash -->
+    <section class="wisdom-section">
+        <h2>Curated Stash of Wisdom 🍍</h2>
+        <p>A sacred collection for Doms, subs, and couples.</p>
+        <div class="wisdom-grid">
+            <div class="card"><h3>For Doms</h3><a href="https://wakelet.com/wake/zfcHq9DpESxoeMlgXo6WJ" target="_blank">View →</a></div>
+            <div class="card"><h3>For Subs</h3><a href="https://wakelet.com/wake/OuAAGOkpJMdseGUyeTVaz" target="_blank">View →</a></div>
+            <div class="card"><h3>For Couples</h3><a href="https://wakelet.com/wake/GJ5cERQS5fQRgu9Ii9xAn" target="_blank">View →</a></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <button onclick="startQuiz()" class="btn">Take Readiness Quiz 🍍</button>
+        <a href="register.html" class="btn">Create Account</a>
+    </section>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot">
+        <img src="Chat bot Icon (1).png" alt="Pine the Guide" onclick="toggleChat()" style="width:85px; cursor:pointer;">
+        <div id="chatWindow" class="chat-window"></div>
+    </div>
+
+    <footer>
+        <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">📲 WhatsApp</a> |
+        <a href="login.html">Learners Portal</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a>
+    </footer>
 
     <script src="script.js"></script>
 </body>
