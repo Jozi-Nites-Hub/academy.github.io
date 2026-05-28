@@ -7,82 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hamburger Nav (same as before) -->
+    <!-- Hamburger Nav (use your existing nav) -->
     <nav class="navbar"> ... </nav>
 
     <header>
         <img src="Jozi Nites Academy Logo.png" alt="Logo" class="logo">
         <h1>Jozi Nites Academy Library</h1>
-        <p>Nurturing Knowledge • Empowering Intimate Excellence 🍍</p>
+        <p>Knowledge • Consent • Black Excellence 🍍</p>
     </header>
 
-    <!-- SEARCH BAR - Like UJ -->
+    <!-- SEARCH BAR -->
     <section class="search-section">
-        <h2>One Search Finds All</h2>
+        <h2>Search the Library</h2>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search workshops, articles, consent guides, workbooks...">
-            <button onclick="performSearch()">Search</button>
+            <input type="text" id="searchInput" placeholder="Search workbooks, recordings, contracts, guides..." onkeyup="if(event.key === 'Enter') performSearch()">
+            <button onclick="performSearch()">🔍 Search</button>
         </div>
+        <div id="searchResults" class="search-results"></div>
     </section>
 
     <div class="library-container">
-        <!-- QUICK LINKS -->
-        <section class="quick-resources">
-            <h2>Library Resources</h2>
+        <!-- DATABASES & GUIDES -->
+        <section class="databases-section">
+            <h2>Databases & Guides</h2>
             <div class="grid">
                 <div class="resource-card">
-                    <h3>Workshop Recordings</h3>
-                    <p>Access all past & current session replays</p>
-                    <a href="portal.html" class="btn">Browse Library</a>
+                    <h3>Consent & Negotiation Toolkit</h3>
+                    <p>Templates, scripts & checklists</p>
+                    <a href="#" class="btn">Access</a>
                 </div>
                 <div class="resource-card">
-                    <h3>Digital Workbooks & Guides</h3>
-                    <p>Downloadable PDFs & templates</p>
-                    <a href="#" class="btn">Download Now</a>
+                    <h3>BDSM Safety & Aftercare</h3>
+                    <p>Medical-grade guides & risk awareness</p>
+                    <a href="#" class="btn">Access</a>
                 </div>
                 <div class="resource-card">
-                    <h3>Consent & Safety Archives</h3>
-                    <p>Key documents, contracts & checklists</p>
-                    <a href="#" class="btn">Explore</a>
+                    <h3>Ethical Non-Monogamy Library</h3>
+                    <p>Books, articles & case studies</p>
+                    <a href="#" class="btn">Access</a>
                 </div>
             </div>
         </section>
 
-        <!-- LIBRARY SUPPORT -->
-        <section class="support-section">
-            <h2>Library Support & Tools</h2>
+        <!-- STAFF Q&A - WHO IS WHO -->
+        <section class="staff-section">
+            <h2>Meet Our Facilitators</h2>
             <div class="grid">
-                <div class="card">
-                    <h3>Consent Education Hub</h3>
-                    <p>Guides, videos & templates</p>
+                <div class="staff-card">
+                    <h3>Sis Nomsa Nkosi</h3>
+                    <p><strong>Lead Facilitator - Contracts & Consent</strong></p>
+                    <p>Clinical sexologist & relationship coach with 12+ years helping Black couples build safe power dynamics.</p>
                 </div>
-                <div class="card">
-                    <h3>Recommended Reading List</h3>
-                    <p>Curated books & articles for Doms, Subs & Couples</p>
-                    <a href="#" class="btn">View Wakelet Collections</a>
+                <div class="staff-card">
+                    <h3>Bro Lerato Mbatha</h3>
+                    <p><strong>BDSM Education & Safety</strong></p>
+                    <p>Former trauma-informed counsellor specialising in kink-aware therapy and practical skill building.</p>
                 </div>
-                <div class="card">
-                    <h3>Research & References</h3>
-                    <p>Academic papers on sexuality, consent & relationships in Africa</p>
-                </div>
-                <div class="card">
-                    <h3>Ask a Facilitator</h3>
-                    <p>Submit questions to our expert team</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURED RESOURCES -->
-        <section class="featured">
-            <h2>Featured This Month</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>BDSM Safety 101 Workbook</h3>
-                    <p>Volume 1 - Play Smart, Stay Safe</p>
-                </div>
-                <div class="card">
-                    <h3>Negotiation Scripts & Templates</h3>
-                    <p>For Kinky Contracts</p>
+                <div class="staff-card">
+                    <h3>Bro Thabo Nkosi</h3>
+                    <p><strong>Non-Monogamy & Community Dynamics</strong></p>
+                    <p>Community organiser and educator focusing on ethical swinging and group play in African contexts.</p>
                 </div>
             </div>
         </section>
@@ -94,6 +78,44 @@
         <a href="privacy-policy.html">Privacy</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Real Working Search Function
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            if (!query) {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            const sampleResources = [
+                { title: "Kinky Contracts Template", desc: "Full editable contract + negotiation guide" },
+                { title: "Aftercare Mastery Guide", desc: "Emotional & physical aftercare best practices" },
+                { title: "Safe Word System Explained", desc: "Traffic light system & advanced protocols" },
+                { title: "BDSM Safety 101 Workbook", desc: "Volume 1 - Play Smart, Stay Safe" }
+            ];
+
+            const filtered = sampleResources.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.desc.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = `<p>No results found for "${query}". Try different keywords.</p>`;
+            } else {
+                filtered.forEach(item => {
+                    resultsContainer.innerHTML += `
+                        <div class="search-result-card">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc}</p>
+                            <button class="btn">Access Resource</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+    </script>
 </body>
 </html>
