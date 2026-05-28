@@ -1,4 +1,95 @@
-body {
+body /* ============== HAMBURGER NAV ============== */
+.navbar {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 3px solid #FFD700;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    height: 55px;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background: #FFD700;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Mobile Menu */
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(26, 0, 51, 0.98);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 2px solid #FFD700;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255,215,0,0.2);
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: #FFD700;
+}
+
+/* Active State */
+.nav-menu.active {
+    display: flex;
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        width: auto;
+        padding: 0;
+        border: none;
+    }
+    
+    .nav-menu a {
+        padding: 10px 20px;
+        border: none;
+    }
+}
+{
     background: url('Jozi Nites Official-Wallpaper.png') repeat fixed center center !important;
     background-size: cover !important;
     color: #f0f0f0;
