@@ -567,6 +567,55 @@ section {
     padding: 15px;
 }
 
+.search-section {
+    padding: 30px 15px;
+    background: rgba(26, 0, 51, 0.9);
+    text-align: center;
+}
+
+.search-bar {
+    max-width: 700px;
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid #FFD700;
+    background: #111;
+    color: white;
+    border-radius: 10px;
+}
+
+.search-results {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.search-result-card {
+    background: rgba(0,0,0,0.6);
+    border: 2px solid #FFD700;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+}
+
+.staff-section .staff-card {
+    background: rgba(26, 0, 51, 0.9);
+    border: 2px solid #FFD700;
+    padding: 20px;
+    text-align: center;
+}
+
+.library-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 /* Footer */
 footer {
     text-align: center;
