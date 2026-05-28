@@ -13,12 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Optimize Images
-        uses: calibreapp/image-actions@v2
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          path: .
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -36,5 +30,5 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: ✅ Jozi Nites Academy - Site Updated Successfully!
           to: academy@jozinites.co.za
-          from: Jozi Nites Academy Bot <no-reply@jozinites.co.za>
-          body: Great news Johnny Boy! 🍍 Your website has been successfully updated and is now live.
+          from: Jozi Nites Academy Bot
+          body: Great news! Your website has been successfully deployed. 🍍
