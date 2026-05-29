@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library & Resources - Jozi Nites Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hamburger Nav (use your existing nav) -->
+    <nav class="navbar"> ... </nav>
+
+    <header>
+        <img src="Jozi Nites Academy Logo.png" alt="Logo" class="logo">
+        <h1>Jozi Nites Academy Library</h1>
+        <p>Knowledge • Consent • Black Excellence 🍍</p>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <section class="search-section">
+        <h2>Search the Library</h2>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search workbooks, recordings, contracts, guides..." onkeyup="if(event.key === 'Enter') performSearch()">
+            <button onclick="performSearch()">🔍 Search</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+    </section>
+
+    <div class="library-container">
+        <!-- DATABASES & GUIDES -->
+        <section class="databases-section">
+            <h2>Databases & Guides</h2>
+            <div class="grid">
+                <div class="resource-card">
+                    <h3>Consent & Negotiation Toolkit</h3>
+                    <p>Templates, scripts & checklists</p>
+                    <a href="#" class="btn">Access</a>
+                </div>
+                <div class="resource-card">
+                    <h3>BDSM Safety & Aftercare</h3>
+                    <p>Medical-grade guides & risk awareness</p>
+                    <a href="#" class="btn">Access</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Ethical Non-Monogamy Library</h3>
+                    <p>Books, articles & case studies</p>
+                    <a href="#" class="btn">Access</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAFF Q&A - WHO IS WHO -->
+        <section class="staff-section">
+            <h2>Meet Our Facilitators</h2>
+            <div class="grid">
+                <div class="staff-card">
+                    <h3>Sis Nomsa Nkosi</h3>
+                    <p><strong>Lead Facilitator - Contracts & Consent</strong></p>
+                    <p>Clinical sexologist & relationship coach with 12+ years helping Black couples build safe power dynamics.</p>
+                </div>
+                <div class="staff-card">
+                    <h3>Bro Lerato Mbatha</h3>
+                    <p><strong>BDSM Education & Safety</strong></p>
+                    <p>Former trauma-informed counsellor specialising in kink-aware therapy and practical skill building.</p>
+                </div>
+                <div class="staff-card">
+                    <h3>Bro Thabo Nkosi</h3>
+                    <p><strong>Non-Monogamy & Community Dynamics</strong></p>
+                    <p>Community organiser and educator focusing on ethical swinging and group play in African contexts.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <a href="index.html">Home</a> |
+        <a href="portal.html">Dashboard</a> |
+        <a href="privacy-policy.html">Privacy</a>
+    </footer>
+
+    <script>
+        // Real Working Search Function
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            if (!query) {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            const sampleResources = [
+                { title: "Kinky Contracts Template", desc: "Full editable contract + negotiation guide" },
+                { title: "Aftercare Mastery Guide", desc: "Emotional & physical aftercare best practices" },
+                { title: "Safe Word System Explained", desc: "Traffic light system & advanced protocols" },
+                { title: "BDSM Safety 101 Workbook", desc: "Volume 1 - Play Smart, Stay Safe" }
+            ];
+
+            const filtered = sampleResources.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.desc.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = `<p>No results found for "${query}". Try different keywords.</p>`;
+            } else {
+                filtered.forEach(item => {
+                    resultsContainer.innerHTML += `
+                        <div class="search-result-card">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc}</p>
+                            <button class="btn">Access Resource</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jozi Nites Academy — Nurturing Relationships, Empowering Individuals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --navy-light: #1E293B;
+            --gold: #C5A059;
+            --gold-light: #D4B76A;
+            --coral: #E85D4E;
+            --coral-dark: #D1493A;
+            --ivory: #FDF8F3;
+            --cream: #F5EDE4;
+            --charcoal: #1E293B;
+            --gray: #78716C;
+            --gray-light: #A8A29E;
+            --white: #FFFFFF;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes typing { 0% { width: 0; } 100% { width: 100%; } }
+        @keyframes blink { 50% { border-color: transparent; } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .fade-in-up {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(253, 248, 243, 0.95); backdrop-filter: blur(10px);
+            z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 12px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo img { height: 56px; width: auto; transition: transform 0.3s ease; }
+        .logo img:hover { transform: scale(1.05); }
+        .nav-links { display: flex; list-style: none; gap: 32px; }
+        .nav-links a {
+            text-decoration: none; color: var(--charcoal); font-weight: 500;
+            font-size: 14px; transition: color 0.3s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .btn-donate-nav {
+            background: var(--coral); color: var(--white); padding: 10px 24px;
+            border-radius: var(--radius-md); text-decoration: none; font-weight: 600;
+            font-size: 14px; transition: all 0.3s ease;
+        }
+        .btn-donate-nav:hover { background: var(--coral-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--charcoal); font-size: 24px; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 120px 24px 80px; position: relative;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white); overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(197, 160, 89, 0.2); border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 8px 20px; border-radius: 50px; font-size: 14px; color: var(--gold);
+            margin-bottom: 32px; animation: fadeInUp 0.8s ease;
+        }
+        .hero-title {
+            font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700; line-height: 1.1; margin-bottom: 24px;
+        }
+        .hero-title .highlight { color: var(--gold); display: block; }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem); color: rgba(255,255,255,0.8);
+            margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .hero-cta { display: flex; gap: 16px; justify-content: center; margin-bottom: 60px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--gold); color: var(--navy); padding: 16px 32px;
+            border-radius: var(--radius-md); text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(197,160,89,0.3); }
+        .btn-secondary {
+            background: transparent; color: var(--white); padding: 16px 32px;
+            border-radius: var(--radius-md); text-decoration: none; font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s ease;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--white); transform: translateY(-3px); }
+        .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-number { display: block; font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: var(--gold); line-height: 1; }
+        .stat-label { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 8px; display: block; }
+        .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); animation: float 2s ease-in-out infinite; }
+        .scroll-indicator { color: rgba(255,255,255,0.5); cursor: pointer; transition: color 0.3s ease; font-size: 24px; }
+        .scroll-indicator:hover { color: var(--gold); }
+
+        /* Section Headers */
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-tag {
+            display: inline-block; background: rgba(197, 160, 89, 0.15); color: var(--gold);
+            padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+        }
+        .section-header h2 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 16px; }
+        .section-subtitle { font-size: 1.125rem; color: var(--gray); max-width: 600px; margin: 0 auto; }
+
+        /* About */
+        .about { padding: 100px 0; background: var(--ivory); }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .about-card {
+            background: var(--white); padding: 40px; border-radius: var(--radius-lg);
+            text-align: center; box-shadow: var(--shadow-sm); transition: all 0.4s ease;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        .about-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); border-color: rgba(197,160,89,0.3); }
+        .about-icon {
+            width: 64px; height: 64px; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; color: var(--white); font-size: 28px;
+        }
+        .about-card h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 12px; }
+        .about-card p { color: var(--gray); font-size: 15px; line-height: 1.7; }
+
+        /* Calendar */
+        .calendar { padding: 100px 0; background: var(--cream); }
+        .timeline { max-width: 800px; margin: 0 auto; position: relative; }
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            width: 2px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--coral));
+        }
+        .timeline-item { display: flex; justify-content: center; align-items: flex-start; margin-bottom: 48px; position: relative; }
+        .timeline-item:nth-child(odd) .timeline-content { margin-right: 60px; text-align: right; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: 60px; text-align: left; }
+        .timeline-dot {
+            width: 16px; height: 16px; background: var(--gold); border-radius: 50%;
+            position: absolute; left: 50%; transform: translateX(-50%);
+            border: 4px solid var(--cream); box-shadow: 0 0 0 4px rgba(197,160,89,0.2); z-index: 2;
+        }
+        .timeline-content {
+            background: var(--white); padding: 24px 32px; border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md); max-width: 360px; width: 100%; transition: all 0.3s ease;
+        }
+        .timeline-content:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+        .timeline-month { display: inline-block; background: var(--navy); color: var(--gold); padding: 4px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+        .timeline-content h3 { font-family: var(--font-heading); font-size: 1.25rem; color: var(--navy); margin-bottom: 8px; }
+        .timeline-content p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+
+        /* Courses */
+        .courses { padding: 100px 0; background: var(--ivory); }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; max-width: 900px; margin: 0 auto; }
+        .course-card {
+            background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow-md); transition: all 0.4s ease; border: 1px solid rgba(197,160,89,0.1);
+        }
+        .course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+        .course-image {
+            height: 200px; background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            display: flex; align-items: center; justify-content: center;
+        }
+        .course-placeholder { color: var(--gold); opacity: 0.5; font-size: 48px; }
+        .course-content { padding: 32px; text-align: center; }
+        .course-tag {
+            display: inline-block; background: rgba(232,93,78,0.1); color: var(--coral);
+            padding: 4px 16px; border-radius: 50px; font-size: 12px; font-weight: 600; margin-bottom: 16px;
+        }
+        .course-content h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 12px; }
+        .course-content > p { color: var(--gray); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+        .course-meta { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; font-size: 14px; color: var(--gray-light); }
+        .course-meta span { display: flex; align-items: center; gap: 6px; }
+        .btn-course {
+            display: inline-block; background: var(--navy); color: var(--white);
+            padding: 12px 28px; border-radius: var(--radius-md); text-decoration: none;
+            font-weight: 600; transition: all 0.3s ease;
+        }
+        .btn-course:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+        /* Donation */
+        .donate { padding: 100px 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--white); }
+        .donate-card {
+            max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px); border: 1px solid rgba(197,160,89,0.2);
+            border-radius: var(--radius-xl); padding: 48px; text-align: center;
+        }
+        .donate-icon {
+            width: 80px; height: 80px; background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; color: var(--white); font-size: 36px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .donate-card h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 16px; }
+        .donate-card > p { color: rgba(255,255,255,0.8); margin-bottom: 32px; line-height: 1.7; }
+        .bank-details {
+            background: rgba(255,255,255,0.08); border-radius: var(--radius-md);
+            padding: 24px; margin-bottom: 32px; text-align: left; font-size: 14px;
+        }
+        .bank-details h4 { color: var(--gold); margin-bottom: 12px; font-size: 16px; }
+        .bank-details p { margin-bottom: 6px; color: rgba(255,255,255,0.9); }
+        .bank-details .label { color: var(--gray-light); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .donate-amounts { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        .amount-btn {
+            background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
+            color: var(--white); padding: 12px 24px; border-radius: var(--radius-md);
+            cursor: pointer; font-weight: 600; transition: all 0.3s ease; font-family: var(--font-body);
+        }
+        .amount-btn:hover { background: rgba(255,255,255,0.2); border-color: var(--gold); }
+        .amount-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+        .btn-donate {
+            display: inline-block; background: var(--coral); color: var(--white);
+            padding: 16px 48px; border-radius: var(--radius-md); text-decoration: none;
+            font-weight: 700; font-size: 1.125rem; transition: all 0.3s ease; margin-bottom: 16px;
+        }
+        .btn-donate:hover { background: var(--coral-dark); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(232,93,78,0.3); }
+        .donate-note { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+        /* Suggestion Box */
+        .suggestion { padding: 100px 0; background: var(--ivory); }
+        .suggestion-card {
+            max-width: 700px; margin: 0 auto; background: var(--white);
+            border-radius: var(--radius-xl); padding: 48px; box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(197,160,89,0.15);
+        }
+        .suggestion-header { text-align: center; margin-bottom: 24px; }
+        .suggestion-header i { font-size: 48px; color: var(--gold); margin-bottom: 12px; display: block; }
+        .suggestion-header h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--navy); }
+        .suggestion-card > p { text-align: center; color: var(--gray); margin-bottom: 32px; }
+        .suggestion-form { display: flex; flex-direction: column; gap: 20px; }
+        .suggestion-success { display: none; text-align: center; padding: 40px; }
+        .suggestion-success i { font-size: 64px; color: #22C55E; margin-bottom: 16px; }
+        .suggestion-success p { font-size: 1.125rem; color: var(--navy); }
+
+        /* FAQ */
+        .faq { padding: 100px 0; background: var(--cream); }
+        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.3s ease; }
+        .faq-item:hover { box-shadow: var(--shadow-md); }
+        .faq-question {
+            width: 100%; padding: 24px 32px; background: none; border: none;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; font-family: var(--font-body); font-size: 1.125rem;
+            font-weight: 600; color: var(--navy); text-align: left;
+        }
+        .faq-question i { font-size: 20px; color: var(--gold); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px; }
+        .faq-item.open .faq-question i { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding: 0 32px 24px; }
+        .faq-answer p { color: var(--gray); line-height: 1.7; }
+
+        /* Contact */
+        .contact { padding: 100px 0; background: var(--ivory); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; max-width: 1000px; margin: 0 auto; align-items: start; }
+        .contact-info { display: flex; flex-direction: column; gap: 24px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+        .contact-item i { font-size: 20px; color: var(--gold); flex-shrink: 0; margin-top: 4px; }
+        .contact-item span { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 4px; }
+        .contact-item a, .contact-item p { color: var(--navy); text-decoration: none; font-weight: 500; line-height: 1.5; }
+        .contact-item a:hover { color: var(--gold); }
+        .contact-form { background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 14px; font-weight: 500; color: var(--navy); }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 16px; border: 2px solid var(--cream); border-radius: var(--radius-sm);
+            font-family: var(--font-body); font-size: 15px; transition: border-color 0.3s ease; background: var(--ivory);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .btn-submit {
+            background: var(--navy); color: var(--white); padding: 16px 32px; border: none;
+            border-radius: var(--radius-md); font-family: var(--font-body); font-size: 16px;
+            font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.3s ease; margin-top: 8px;
+        }
+        .btn-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        /* Footer */
+        .footer { background: var(--navy); color: var(--white); padding: 80px 0 32px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+        .footer-logo { height: 56px; margin-bottom: 16px; opacity: 0.9; }
+        .footer-brand p { color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 15px; }
+        .footer-links h4 { font-family: var(--font-heading); font-size: 1.125rem; margin-bottom: 20px; color: var(--gold); }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--gold); }
+        .social-links { display: flex; gap: 16px; margin-top: 20px; }
+        .social-links a {
+            width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 20px; transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-links a:hover { background: var(--gold); color: var(--navy); transform: translateY(-3px); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        .footer-credit { font-style: italic; }
+        .company-docs {
+            margin-top: 16px; padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .company-docs p { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+        .company-docs a { color: var(--gold); text-decoration: none; font-size: 12px; }
+        .company-docs a:hover { text-decoration: underline; }
+
+        /* AI Chatbot */
+        .chatbot-container {
+            position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+        }
+        .chatbot-toggle {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(197,160,89,0.4); transition: all 0.3s ease;
+            color: var(--navy); font-size: 24px; animation: bounce 2s ease-in-out infinite;
+        }
+        .chatbot-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(197,160,89,0.5); }
+        .chatbot-toggle i { font-size: 24px; }
+        .chatbot-window {
+            position: absolute; bottom: 80px; right: 0; width: 380px; max-height: 500px;
+            background: var(--white); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl); overflow: hidden;
+            display: none; flex-direction: column; border: 1px solid rgba(197,160,89,0.2);
+        }
+        .chatbot-window.active { display: flex; animation: slideInRight 0.3s ease; }
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: var(--white); padding: 20px; display: flex; align-items: center; gap: 12px;
+        }
+        .chatbot-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--coral));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; border: 3px solid var(--white);
+        }
+        .chatbot-header-info h4 { font-family: var(--font-heading); font-size: 1.125rem; }
+        .chatbot-header-info p { font-size: 12px; color: rgba(255,255,255,0.7); }
+        .chatbot-close {
+            margin-left: auto; background: none; border: none; color: var(--white);
+            cursor: pointer; font-size: 20px; opacity: 0.7; transition: opacity 0.3s ease;
+        }
+        .chatbot-close:hover { opacity: 1; }
+        .chatbot-messages {
+            flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;
+            max-height: 320px;
+        }
+        .chat-message {
+            max-width: 80%; padding: 12px 16px; border-radius: var(--radius-md);
+            font-size: 14px; line-height: 1.5; animation: fadeInUp 0.3s ease;
+        }
+        .chat-message.bot {
+            background: var(--cream); color: var(--charcoal); align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-message.user {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy); align-self: flex-end; border-bottom-right-radius: 4px;
+        }
+        .chat-message.typing {
+            display: flex; gap: 4px; align-items: center; padding: 16px;
+        }
+        .typing-dot {
+            width: 8px; height: 8px; background: var(--gray); border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        .chatbot-input {
+            padding: 16px 20px; border-top: 1px solid var(--cream);
+            display: flex; gap: 12px;
+        }
+        .chatbot-input input {
+            flex: 1; padding: 12px 16px; border: 2px solid var(--cream);
+            border-radius: var(--radius-md); font-family: var(--font-body);
+            font-size: 14px; outline: none; transition: border-color 0.3s ease;
+        }
+        .chatbot-input input:focus { border-color: var(--gold); }
+        .chatbot-send {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--navy); border: none; color: var(--white);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .chatbot-send:hover { background: var(--gold); color: var(--navy); transform: scale(1.1); }
+        .chatbot-send i { font-size: 16px; }
+        .quick-replies {
+            display: flex; flex-wrap: wrap; gap: 8px; padding: 0 20px 12px;
+        }
+        .quick-reply {
+            background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3);
+            color: var(--navy); padding: 6px 14px; border-radius: 50px;
+            font-size: 12px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .quick-reply:hover { background: var(--gold); color: var(--white); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--ivory); flex-direction: column; padding: 24px; gap: 16px; box-shadow: var(--shadow-lg); }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .btn-donate-nav { display: none; }
+            .hero-stats { gap: 24px; }
+            .stat-number { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { justify-content: flex-start; }
+            .timeline-item:nth-child(odd) .timeline-content, .timeline-item:nth-child(even) .timeline-content { margin-left: 48px; margin-right: 0; text-align: left; }
+            .timeline-dot { left: 20px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .donate-card, .suggestion-card, .contact-form { padding: 32px 24px; }
+            .chatbot-window { width: calc(100vw - 48px); right: -12px; }
+        }
+        @media (max-width: 480px) {
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .courses-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Jozi Nites Academy">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#donate" class="btn-donate-nav">Support Us</a>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge fade-in-up">
+                <i class="fas fa-award"></i>
+                <span>Johannesburg's Premier Intimacy Education Academy</span>
+            </div>
+            <h1 class="hero-title fade-in-up delay-1">
+                Nurturing Relationships.<br>
+                <span class="highlight">Empowering Individuals.</span>
+            </h1>
+            <p class="hero-subtitle fade-in-up delay-2">
+                Evidence-based workshops in consent, pleasure, and relational health.<br>
+                Trauma-informed &bull; Centering Black excellence &bull; Judgement-free
+            </p>
+            <div class="hero-cta fade-in-up delay-3">
+                <a href="#courses" class="btn-primary">Explore Courses</a>
+                <a href="#about" class="btn-secondary">Our Philosophy</a>
+            </div>
+            <div class="hero-stats fade-in-up delay-4">
+                <div class="stat">
+                    <span class="stat-number" data-target="500">0</span>+
+                    <span class="stat-label">Students Empowered</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="12">0</span>
+                    <span class="stat-label">Expert Facilitators</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Years of Trust</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-tag">Our Philosophy</span>
+                <h2>Why We Exist</h2>
+                <p class="section-subtitle">Reclaiming pleasure, consent, and intimacy education for our community</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card fade-in-up">
+                    <div class="about-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Trauma-Informed</h3>
+                    <p>Every workshop is designed with psychological safety at its core. Opt-out is always an option, and consent is practiced, not just preached.</p>
+                </div>
+                <div class="about-card fade-in-up delay-1">
+                    <div class="about-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community-Centered</h3>
+                    <p>We center Black voices, bodies, and experiences in spaces that have historically excluded us. Your identity is honoured here.</p>
+                </div>
+                <div class="about-card fade-in-up delay-2">
+                    <div class="about-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Academically Rigorous</h3>
+                    <p>Our curriculum draws from sexology, psychology, and somatic practices. We cite our sources and update our content annually.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-tag">2026 Academic Calendar</span>
+                <h2>Upcoming Semesters</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">April</span>
+                        <h3>Consent Frameworks &amp; BDSM Negotiation</h3>
+                        <p>Learn the psychology of power exchange, contract drafting, and aftercare protocols.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up delay-1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">June</span>
+                        <h3>Ethical Non-Monogamy &amp; Group Dynamics</h3>
+                        <p>Navigating jealousy, scheduling, and communication in open relationships.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up delay-2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">August</span>
+                        <h3>Adult Social Spaces &amp; Etiquette</h3>
+                        <p>Club culture, party protocols, and building community in adult environments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up delay-3">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">September</span>
+                        <h3>Anal Health &amp; Pleasure Fundamentals</h3>
+                        <p>Anatomy, preparation, and communication for safe and enjoyable anal play.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up delay-4">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">October</span>
+                        <h3>Fantasy, Roleplay &amp; Creative Intimacy</h3>
+                        <p>Exploring imagination, scripts, and embodied storytelling with partners.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up delay-5">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-month">December</span>
+                        <h3>The Art of Asking</h3>
+                        <p>Rejection resilience, desire articulation, and brave communication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-tag">Current Semester</span>
+                <h2>Now Enrolling</h2>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card fade-in-up">
+                    <div class="course-image">
+                        <div class="course-placeholder">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">April Cohort</span>
+                        <h3>Consent Frameworks &amp; BDSM Negotiation</h3>
+                        <p>Master the art of kinky contracts, safewords, and aftercare. Facilitated with live demos and workbook exercises.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-users"></i> Sis Nomsa &amp; Bro Lerato</span>
+                            <span><i class="fas fa-clock"></i> 6 Weeks</span>
+                        </div>
+                        <a href="https://forms.office.com/r/8CQApBsgxu" target="_blank" class="btn-course">Enquire Now</a>
+                    </div>
+                </div>
+                <div class="course-card fade-in-up delay-1">
+                    <div class="course-image">
+                        <div class="course-placeholder">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">December Cohort</span>
+                        <h3>The Art of Asking</h3>
+                        <p>Build rejection resilience and learn to articulate desire with clarity and confidence. A communication masterclass.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-users"></i> Bro Thabo Nkosi</span>
+                            <span><i class="fas fa-clock"></i> 4 Weeks</span>
+                        </div>
+                        <a href="https://forms.office.com/r/8CQApBsgxu" target="_blank" class="btn-course">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="donate">
+        <div class="container">
+            <div class="donate-card fade-in-up">
+                <div class="donate-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2>Support Our Mission</h2>
+                <p>Your contribution helps us offer sliding-scale fees, sponsor students from underserved communities, and maintain our trauma-informed training spaces.</p>
+                <div class="bank-details">
+                    <h4><i class="fas fa-university"></i> Banking Details</h4>
+                    <p><span class="label">Bank</span> Capitec Bank</p>
+                    <p><span class="label">Account Holder</span> MR PERCIVAL MATTHEWS</p>
+                    <p><span class="label">Account Type</span> Savings Account</p>
+                    <p><span class="label">Account Number</span> 2399033945</p>
+                    <p><span class="label">Branch Code</span> 470010</p>
+                </div>
+                <div class="donate-amounts">
+                    <button class="amount-btn" data-amount="100">R100</button>
+                    <button class="amount-btn active" data-amount="250">R250</button>
+                    <button class="amount-btn" data-amount="500">R500</button>
+                    <button class="amount-btn" data-amount="1000">R1000</button>
+                </div>
+                <a href="#" class="btn-donate" onclick="copyBankDetails(); return false;">Copy Banking Details</a>
+                <p class="donate-note">Secure EFT payment. Please use "Donation" as reference. Tax receipts available on request.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suggestion Box -->
+    <section class="suggestion">
+        <div class="container">
+            <div class="suggestion-card fade-in-up">
+                <div class="suggestion-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Have a Suggestion?</h2>
+                </div>
+                <p>Help us grow. Submit course ideas, feedback, or topics you'd like us to cover.</p>
+                <form class="suggestion-form" id="suggestionForm" action="https://forms.office.com/r/8CQApBsgxu" method="get" target="_blank">
+                    <div class="form-group">
+                        <label for="suggest-name">Name (optional)</label>
+                        <input type="text" id="suggest-name" name="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="suggest-email">Email (optional)</label>
+                        <input type="email" id="suggest-email" name="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="suggest-type">Type</label>
+                        <select id="suggest-type" name="type" required>
+                            <option value="">Select one...</option>
+                            <option value="course-idea">Course Idea</option>
+                            <option value="feedback">General Feedback</option>
+                            <option value="topic-request">Topic Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="suggest-message">Your Suggestion *</label>
+                        <textarea id="suggest-message" name="message" rows="4" placeholder="Tell us what you'd like to see..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Suggestion
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-tag">Common Questions</span>
+                <h2>What to Expect</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item fade-in-up">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is my attendance confidential?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We operate under a strict privacy policy. Your name, contact details, and attendance are never shared. What is discussed in workshops stays in workshops.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in-up delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do I need prior experience?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Our courses are designed for all experience levels, from curious beginners to seasoned practitioners. We meet you where you are.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in-up delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Are workshops hands-on or theoretical?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All workshops are clothes-on and discussion-based unless explicitly stated otherwise. We use demos, worksheets, and roleplay — never mandatory participation.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in-up delay-3">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is your cancellation policy?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Full refund up to 7 days before the workshop. 50% refund up to 48 hours before. No refunds within 48 hours, but you may transfer your seat to someone else.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Start Your Journey</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in-up">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span>Email</span>
+                            <a href="mailto:info@jozinites.co.za">info@jozinites.co.za</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span>Phone</span>
+                            <a href="tel:+27123456789">+27 12 345 6789</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Location</span>
+                            <p>Johannesburg, South Africa<br><small>Exact venue shared upon registration</small></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <span>WhatsApp Community</span>
+                            <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">Join Group</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form fade-in-up delay-1" id="contactForm" action="https://forms.office.com/r/8CQApBsgxu" method="get" target="_blank">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Name *</label>
+                            <input type="text" id="contact-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <select id="contact-subject" name="subject">
+                            <option>General Enquiry</option>
+                            <option>Course Registration</option>
+                            <option>Partnership</option>
+                            <option>Press</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message *</label>
+                        <textarea id="contact-message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="Jozi Nites Academy" class="footer-logo">
+                    <p>Nurturing relationships. Empowering individuals. Centering Black pleasure and consent education.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/JoziNitesJHB" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nitesjozi" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://fetlife.com/JoziNite_Crew" target="_blank" title="FetLife">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                        <a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <div class="company-docs">
+                        <p>Registered Company: JOZI NITES (PTY) LTD</p>
+                        <p>Reg No: 2026/101109/07 | Tax No: 9439276230</p>
+                        <p>Director: Percival Matthews</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#calendar">Calendar</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Code of Conduct</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/JoziNitesJHB" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/nitesjozi" target="_blank">Instagram</a></li>
+                        <li><a href="https://fetlife.com/JoziNite_Crew" target="_blank">FetLife</a></li>
+                        <li><a href="https://chat.whatsapp.com/FTDhLVbnvloKKW8mN1kVAt" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jozi Nites Academy. All rights reserved.</p>
+                <p class="footer-credit">Made with intention in Johannesburg</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="chatbot-header-info">
+                    <h4>NiteBot</h4>
+                    <p>Jozi Nites Academy Assistant</p>
+                </div>
+                <button class="chatbot-close" onclick="toggleChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chat-message bot">
+                    Hi there! I am NiteBot, your Jozi Nites Academy assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="quick-replies" id="quickReplies">
+                <button class="quick-reply" onclick="sendQuickReply('Tell me about courses')">Courses</button>
+                <button class="quick-reply" onclick="sendQuickReply('How do I register?')">Register</button>
+                <button class="quick-reply" onclick="sendQuickReply('What are the fees?')">Fees</button>
+                <button class="quick-reply" onclick="sendQuickReply('Is it confidential?')">Privacy</button>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question..." onkeypress="handleChatKeypress(event)">
+                <button class="chatbot-send" onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" onclick="toggleChatbot()" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
+    <script>
+        // Mobile menu
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Animated counter
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) { el.textContent = target; clearInterval(timer); }
+                else el.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number').forEach(num => animateCounter(num));
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) statsObserver.observe(heroStats);
+
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // Donation amount selector
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const amount = btn.getAttribute('data-amount');
+                document.querySelector('.btn-donate').textContent = 'Copy Banking Details (R' + amount + ')';
+            });
+        });
+
+        // Copy banking details
+        function copyBankDetails() {
+            const details = 'Bank: Capitec Bank\nAccount Holder: MR PERCIVAL MATTHEWS\nAccount Type: Savings Account\nAccount Number: 2399033945\nBranch Code: 470010';
+            navigator.clipboard.writeText(details).then(() => {
+                const btn = document.querySelector('.btn-donate');
+                const original = btn.textContent;
+                btn.textContent = 'Copied to Clipboard!';
+                btn.style.background = '#22C55E';
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Chatbot
+        let chatbotOpen = false;
+        function toggleChatbot() {
+            chatbotOpen = !chatbotOpen;
+            const windowEl = document.getElementById('chatbotWindow');
+            const toggle = document.getElementById('chatbotToggle');
+            if (chatbotOpen) {
+                windowEl.classList.add('active');
+                toggle.innerHTML = '<i class="fas fa-times"></i>';
+                toggle.style.animation = 'none';
+            } else {
+                windowEl.classList.remove('active');
+                toggle.innerHTML = '<i class="fas fa-robot"></i>';
+                toggle.style.animation = 'bounce 2s ease-in-out infinite';
+            }
+        }
+
+        const botResponses = {
+            'courses': 'We offer 6 workshops in 2026: Consent & BDSM Negotiation (April), Ethical Non-Monogamy (June), Adult Social Spaces (August), Anal Health & Pleasure (September), Fantasy & Roleplay (October), and The Art of Asking (December). All are trauma-informed and clothes-on.',
+            'register': 'You can register by clicking "Enquire Now" on any course card, or fill out our form at https://forms.office.com/r/8CQApBsgxu. We will send you workshop details, pricing, and payment instructions within 24 hours.',
+            'fees': 'Our workshops range from R800 to R1,500 depending on duration and materials. We offer sliding-scale fees for students, unemployed individuals, and single parents. No one is turned away for lack of funds.',
+            'privacy': 'Your attendance is 100% confidential. We never share names, contact details, or attendance records. What is discussed in workshops stays in workshops. We also do not photograph or record sessions without explicit consent.',
+            'location': 'We operate in Johannesburg, South Africa. Exact venue details are shared only with registered attendees for privacy and security. Most workshops are held in accessible, private venues in the greater Johannesburg area.',
+            'contact': 'You can reach us at info@jozinites.co.za or via WhatsApp. Our team typically responds within 24 hours on weekdays.',
+            'donate': 'You can support our mission via EFT to Capitec Bank, Account: 2399033945, Branch: 470010, Holder: MR PERCIVAL MATTHEWS. Your donations help us offer sliding-scale fees and sponsor students from underserved communities.',
+            'default': 'I am here to help with questions about our courses, registration, privacy, or donations. You can also reach us directly at info@jozinites.co.za. What would you like to know?'
+        };
+
+        function getBotResponse(message) {
+            const lower = message.toLowerCase();
+            if (lower.includes('course') || lower.includes('workshop') || lower.includes('class')) return botResponses.courses;
+            if (lower.includes('register') || lower.includes('sign up') || lower.includes('enrol')) return botResponses.register;
+            if (lower.includes('fee') || lower.includes('price') || lower.includes('cost') || lower.includes('money') || lower.includes('rands')) return botResponses.fees;
+            if (lower.includes('private') || lower.includes('confidential') || lower.includes('secret') || lower.includes('safe')) return botResponses.privacy;
+            if (lower.includes('location') || lower.includes('venue') || lower.includes('where') || lower.includes('address')) return botResponses.location;
+            if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('reach')) return botResponses.contact;
+            if (lower.includes('donate') || lower.includes('support') || lower.includes('contribution') || lower.includes('bank')) return botResponses.donate;
+            if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) return 'Hello! Welcome to Jozi Nites Academy. I can help you with courses, registration, fees, privacy, or donations. What would you like to know?';
+            if (lower.includes('thank')) return 'You are very welcome! Feel free to ask if you have any other questions. Take care!';
+            return botResponses.default;
+        }
+
+        function addMessage(text, isUser) {
+            const container = document.getElementById('chatbotMessages');
+            const msg = document.createElement('div');
+            msg.className = 'chat-message ' + (isUser ? 'user' : 'bot');
+            msg.textContent = text;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showTyping() {
+            const container = document.getElementById('chatbotMessages');
+            const typing = document.createElement('div');
+            typing.className = 'chat-message bot typing';
+            typing.id = 'typingIndicator';
+            typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            container.appendChild(typing);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            input.value = '';
+
+            showTyping();
+            setTimeout(() => {
+                removeTyping();
+                addMessage(getBotResponse(text), false);
+            }, 1200);
+        }
+
+        function sendQuickReply(text) {
+            addMessage(text, true);
+            showTyping();
+            setTimeout(() => {
+                removeTyping();
+                addMessage(getBotResponse(text), false);
+            }, 800);
+        }
+
+        function handleChatKeypress(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+    </script>
+</body>
+</html>
