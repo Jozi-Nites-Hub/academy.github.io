@@ -54,3 +54,5 @@ jobs:
           to: academy@jozinites.co.za
           from: Jozi Nites Academy Bot
           body: The deployment failed. Please check the GitHub Actions logs for details.
+
+
